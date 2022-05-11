@@ -1,5 +1,6 @@
 # geolocation
 Geolocation REST API, obtain IP address geolocation data
+Location is extracted by looking up user IP in a Geo DB (from Maxmind).
 
 ## Instructions
 
@@ -13,6 +14,9 @@ Geolocation REST API, obtain IP address geolocation data
 - Configuration files are located under ``configs`` folder.
 - Format of the configuration file is YAML.
 
+#### GEO_CITY_DB:
+The file name of GEO DB. (The latest version will be downloaded from https://dev.maxmind.com/geoip/geoip2/geolite2/ each time you run the api, and will be scheduled to download it every day. It needs you to sign up and create a License Key)
+It is located under the ``geodb`` folder.
 
 ## How to run
 
@@ -124,3 +128,15 @@ Response:
   }
 }
 ```
+
+- geoip-golang (https://github.com/oschwald/geoip2-golang)
+
+To read from geoip db file.
+
+- viper (https://github.com/spf13/viper)
+
+Viper is a complete configuration solution for Go applications including 12-Factor apps. It is designed to work within an application, and can handle all types of configuration needs and formats.
+
+_GeoLite2:
+This product includes GeoLite2 data created by MaxMind, available from
+https://www.maxmind.com_
