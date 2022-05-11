@@ -1,0 +1,61 @@
+swagger: "2.0"
+info:
+  title: GeoLocation
+  description: REST API Geolocation Service
+  version: 1.0.0
+host: localhost:3000
+basePath: /api/v1
+schemes:
+  - http
+
+paths:
+  /geo:
+    get:
+      description: get geo information for an IP
+      summary: Geolocation
+      tags:
+        - Geo
+      operationId: GetGeolocationInfo
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: ip
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Geolocation information
+          schema:
+            $ref: '#/definitions/Geolocation'
+          headers: { }
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/ProblemDetails"
+definitions:
+  Geolocation:
+    type: object
+    properties:
+      ip_address:
+        type: string
+      country_code:
+        type: string
+      country:
+        type: string
+      latitude:
+        type: number
+      longitude:
+        type: number
+      mystery_value:
+        type: integer
+  ProblemDetails:
+    type: object
+    description:
+    properties:
+      message:
+        type: string
+      code:
+        type: integer

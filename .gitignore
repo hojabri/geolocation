@@ -6,6 +6,9 @@
 *.dylib
 .idea
 
+GeoLite2-City.mmdb
+geolocation
+
 # Test binary, built with `go test -c`
 *.test
 
